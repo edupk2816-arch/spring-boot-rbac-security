@@ -11,7 +11,7 @@
 
 ## About This Project
 
-Built this to demonstrate the exact RBAC pattern I implemented in production at an enterprise finance client — where **hardcoding roles in annotations was not an option** because access rules needed to change without redeployment.
+Built this to demonstrate the exact RBAC pattern I implemented in production at an enterprise finance client — where **hardcoding roles in annotations was not an option** because the system allowed administrators to create unlimited custom roles at runtime and assign them to users dynamically. Predefining every possible role in code simply would not scale.
 
 The core idea: instead of `@PreAuthorize("hasRole('ADMIN')")` scattered across controllers, every role is mapped to a list of allowed API URL patterns stored in a database. The `UserAccessFilter` checks every incoming request against that mapping dynamically.
 
